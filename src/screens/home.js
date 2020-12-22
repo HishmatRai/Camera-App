@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 export default class Home extends React.Component {
     constructor(props) {
         super();
@@ -8,16 +11,15 @@ export default class Home extends React.Component {
     render() {
         const image = { uri: 'https://reactjs.org/logo-og.png' };
         let UserData = [
-            {name :"Stella Malone", seen : "1263", love :"12.5k", like :"1.8k", profileImg :"require('./../../assets/profile1.png')"},
-            {name :"Stella Malone", seen : "1263", love :"12.5k", like :"1.8k", profileImg :"require('./../../assets/profile1.png')"},
+            { name: "Stella Malone", seen: "1263", love: "12.5k", like: "1.8k", profileImg: "require('./../../assets/profile1.png')" },
+            { name: "Stella Malone", seen: "1263", love: "12.5k", like: "1.8k", profileImg: "require('./../../assets/profile1.png')" },
+            { name: "Stella Malone", seen: "1263", love: "12.5k", like: "1.8k", profileImg: "require('./../../assets/profile1.png')" },
         ]
         return (
             <View style={styles.container}>
                 <StatusBar barStyle="white" hidden={false} backgroundColor="#242a37" translucent={true} />
                 {/* >>>>>>>>>>>>>>>>> Body <<<<<<<<<<<<<<<<<<< */}
-                <ScrollView>
                     <View style={styles.body_main}>
-
                         {/* >>>>>>>>>>>>>>>>> LIVE BUTTON <<<<<<<<<<<<<<<<<<< */}
                         <View style={styles._live_follow_btn_main}>
                             <TouchableOpacity style={styles._live_btn}>
@@ -33,44 +35,61 @@ export default class Home extends React.Component {
                                 <Text style={styles._live_btn_dot}></Text>
                             </TouchableOpacity>
                         </View>
-
+                        <ScrollView>
                         {/* >>>>>>>>>>>>>>>>> USER <<<<<<<<<<<<<<<<<<< */}
-                        <View style={styles._user_main}>
-                            {/* <ImageBackground source={image} style={styles.image}>
-                                <Text style={styles.text}>Inside</Text>
-                            </ImageBackground> */}
-                            <View style={styles._user_main2}>
-                                <View style={styles._name_profile_main}>
-                                    <Image source={require('./../../assets/profile1.png')} style={styles.profile_img} />
-                                    <View>
-                                        <Text>Stella Malone</Text>
-                                        <View>
-                                            <Text>1263</Text>
-                                            <Text>1263</Text>
-                                        </View>
+                        {
+                            UserData.map((v, i) => {
+                                return (
+                                    <View style={styles._user_main}>
+                                        <ImageBackground source={require('./../../assets/img1.png')} style={styles.image}>
+                                            <View style={styles._user_main2}>
+                                                <View style={styles._name_profile_main}>
+                                                    <Image source={require('./../../assets/profile1.png')} style={styles.profile_img} />
+                                                    <View style={styles._usr_name_main}>
+                                                        <Text style={styles._user_name}>{v.name}</Text>
+                                                        <View style={styles._seen_main}>
+                                                            <AntDesign name="eye" size={15} color="#F99F3D" />
+                                                            <Text style={styles._seen_count}>{v.seen}</Text>
+                                                        </View>
+                                                    </View>
+                                                    <TouchableOpacity style={styles._add_p_icon}>
+                                                        <Entypo name="plus" size={24} color="white" />
+                                                    </TouchableOpacity>
+                                                </View>
+                                                <View style={styles._users_show_main}>
+                                                    <TouchableOpacity style={styles._add_icon}>
+                                                        <Feather name="more-horizontal" size={24} color="#61402A" />
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={styles._add_icon2}>
+                                                        <Image source={require('./../../assets/profile1.png')} style={styles.profile_img} />
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={styles._add_icon2}>
+                                                        <Image source={require('./../../assets/profile1.png')} style={styles.profile_img} />
+                                                    </TouchableOpacity>
+                                                    <TouchableOpacity style={styles._add_icon2}>
+                                                        <Image source={require('./../../assets/profile1.png')} style={styles.profile_img} />
+                                                    </TouchableOpacity>
+                                                </View>
+                                            </View>
+                                            {/* ======================< >======================= */}
+                                            <View style={styles._love_icons_main}>
+                                                <TouchableOpacity >
+                                                    <AntDesign name="heart" size={24} color="white" />
+                                                </TouchableOpacity>
+                                                <Text style={styles._love_counter}>{v.love}</Text>
+                                                <TouchableOpacity>
+                                                    <Ionicons name="chatbubble-ellipses" size={24} color="white" />
+                                                </TouchableOpacity>
+                                                <Text style={styles._love_counter}>{v.like}</Text>
+                                            </View>
+                                        </ImageBackground>
                                     </View>
-                                    <TouchableOpacity style={styles._add_icon}>
-                                        <Text>fsdfs</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles._users_show_main}>
-                                    <TouchableOpacity style={styles._add_icon}>
-                                        <Text>...</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles._add_icon}>
-                                        <Text>fsdfs</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles._add_icon}>
-                                        <Text>fsdfs</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles._add_icon}>
-                                        <Text>fsdfs</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </View>
+                                )
+                            })
+                        }
+                        <View style={{paddingBottom:190}}></View>
+                        </ScrollView>
                     </View>
-                </ScrollView>
                 {/* >>>>>>>>>>>>>>>>> Tab bar <<<<<<<<<<<<<<<<<<< */}
                 <View style={styles._tab_main}>
                     <View style={styles._tab_show}>
@@ -161,7 +180,7 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     },
     body_main: {
-        margin: 20
+        margin: 12
     },
     _live_follow_btn_main: {
         flexDirection: "row",
@@ -197,44 +216,107 @@ const styles = StyleSheet.create({
     _user_main: {
         width: "100%",
         height: 300,
-        backgroundColor: "red",
         borderRadius: 20,
         // alignItems: "center",
         // alignSelf: "center",
-        marginTop: 40,
+        marginTop: 15,
     },
     _user_main2: {
         flexDirection: "row",
         justifyContent: "space-between",
         // alignSelf: "center",
-        // alignItems: "center",
-        // margin: 20
+        alignItems: "center",
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 5,
+        paddingRight: 5
     },
     _users_show_main: {
-        backgroundColor: "white",
         flexDirection: "row",
         justifyContent: "space-between",
-        width: "30%",
+        width: "35%",
+        alignItems: "center",
+        padding: 5,
+
     },
     _name_profile_main: {
-        backgroundColor: "white",
+        backgroundColor: "#433a33",
         // opacity: 0.7,
         borderRadius: 100,
         padding: 5,
         flexDirection: "row",
-        width: "60%",
+        width: "55%",
+        alignItems: "center",
 
     },
     _add_icon: {
-        backgroundColor: "#F99F3D",
-        width: 20,
-        height: 20,
-        borderRadius: 100
+        backgroundColor: "white",
+        width: 34,
+        height: 34,
+        borderRadius: 100,
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: -1
+
+    },
+    _add_icon2: {
+        backgroundColor: "white",
+        width: 34,
+        height: 34,
+        borderRadius: 100,
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: -10
     },
     profile_img: {
         width: 33,
         height: 33,
         borderRadius: 100
-    }
+    },
+    image: {
+        // flex: 1,
+        resizeMode: 'cover',
+        width: "100%",
+        height: 300,
+        borderRadius: 100,
+    },
+    _usr_name_main: {
+        marginLeft: 10,
+    },
+    _user_name: {
+        fontSize: 15,
+        fontWeight: "normal",
+        color: "white"
 
+    },
+    _seen_main: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    _seen_count: {
+        color: "white",
+        paddingLeft: 5
+    },
+    _add_p_icon: {
+        backgroundColor: "#F99F3D",
+        borderRadius: 100,
+        width: 30,
+        height: 30,
+        marginLeft: 10,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    _love_icons_main: {
+        flexDirection: "row",
+        marginTop: 150,
+        width: "80%",
+        marginLeft: "10%",
+        alignItems: "center"
+    },
+    _love_counter: {
+        color: "white",
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 15
+    }
 });

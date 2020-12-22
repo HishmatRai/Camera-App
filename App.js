@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Home from './src/screens/home'
+import Home from './src/screens/profile'
 export default class App extends React.Component {
   constructor(props) {
       super();
